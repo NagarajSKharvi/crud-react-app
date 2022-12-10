@@ -6,7 +6,8 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 4000;
 const url =
-  "mongodb+srv://user43:user43@cluster44.lcqv6.mongodb.net/Add_User?retryWrites=true&w=majority";
+  "mongodb+srv://nkharvi:123@cluster0.zudtzxv.mongodb.net/?retryWrites=true&w=majority";
+  // "mongodb+srv://user43:user43@cluster44.lcqv6.mongodb.net/Add_User?retryWrites=true&w=majority";
 mongoose.connect(
   process.env.MONGODB_URI || url,
   { useNewUrlParser: true, useUnifiedTopology: true },

@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+  # db:
+  #   image: postgres
+  #   ports: ["5432:5432"]
+  #   hostname: db
+  #   environment:
+  #       POSTGRES_USER: nkharvi
+  #       POSTGRES_PASSWORD: 123
+  #       POSTGRES_DB: "testingdb"
+  #       POSTGRES_HOST_AUTH_METHOD: "trust"
+  #   volumes:
+  #     - /Users/nagarajskharvi/Downloads/db-data/postgres:/var/lib/postgresql
+  #   container_name: postgresqldatabase
+  gui:
+    image: dbeaver/cloudbeaver
+    ports: ["8978:8978"]
+    hostname: gui
+    volumes:
+      - /Users/nagarajskharvi/Downloads/db-data/dbeaver:/opt/cloudbeaver/workspace
+    container_name: dbeaver
+    tty: true
+    depends_on:
+      - db
+    links:
+      - db
+  web:
+    build: student-app-azure
+    image: student-app-azure
+    ports: ["8080:8080"]
+    hostname: web
+    tty: true
+    depends_on:
+      - db
+    links:
+      - db
